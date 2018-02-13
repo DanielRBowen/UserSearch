@@ -1,0 +1,123 @@
+﻿@using UserSearch.Controllers;
+@using UserSearch.ViewModels;
+@model IndexViewModel
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="container">
+    <div class="text-center panel bg-info">
+        <h1>User Search</h1>
+    </div>
+
+    @{
+        var prevDisabled = !Model.UserViewModels.HasPreviousPage ? "disabled" : "";
+        var nextDisabled = !Model.UserViewModels.HasNextPage ? "disabled" : "";
+    }
+
+    <div class="panel panel-default">
+        <div class="panel-body">
+            <form asp-controller="Home" asp-action="Index" method="get">
+                <div>
+                    <label for="searchQuery">Find by First or Last name.</label>
+                    <input class="form-control" type="text" id="searchQuery" name="searchQuery" value="@Model.SearchQuery" />
+                    <input type="submit" value="Search" class="btn btn-default btn-block" />
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <a asp-controller="Users" asp-action="Create" class="btn btn-default btn-sm">Create New</a>
+
+    @if (Model.UserViewModels.Any())
+    {
+        <table class="table table-bordered table-striped">
+            <thead>
+                <tr>
+                    <th>
+                        First Name
+                    </th>
+                    <th>
+                        Last Name
+                    </th>
+                    <th>
+                        Address
+                    </th>
+                    <th>
+                        Age
+                    </th>
+                    <th>
+                        Phone
+                    </th>
+                    <th>
+                        Image
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var user in Model.UserViewModels)
+                {
+                    <tr>
+                        <td>@user.FirstName</td>
+                        <td>@user.LastName</td>
+                        <td>@user.Address</td>
+                        <td>@user.Age</td>
+                        <td>@user.Phone</td>
+                        <td>
+                            @if (user.FirstMediaId != null)
+                            {
+                                <img class="media-object" src="@Url.Action(nameof(MediaController.Thumbnail), "Media", values: new { id = user.FirstMediaId})" />
+                            }
+                            else
+                            {
+                                <img class="media-object" src="~/images/no-image.jpg" />
+                            }
+                        </td>
+                        <td>
+                            <a asp-area="" asp-controller="Users" asp-action="Details" asp-route-id="@user.Id" class="btn btn-primary btn-sm">View</a>
+                            &nbsp;
+                            <a asp-area="" asp-controller="Users" asp-action="Edit" asp-route-id="@user.Id" class="btn btn-primary btn-sm">Edit</a>
+                            &nbsp;
+                            <a asp-area="" asp-controller="Users" asp-action="Delete" asp-route-id="@user.Id" class="btn btn-danger btn-sm">Delete</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+
+        <a asp-controller="Home"
+           asp-action="Index"
+           asp-route-pageIndex="@(Model.UserViewModels.PageIndex - 1)"
+           asp-route-searchQuery="@Model.SearchQuery"
+           asp-route-pageSize="@Model.PageSize"
+           class="btn btn-default @prevDisabled">
+            Previous
+
+        </a>
+        <a asp-controller="Home"
+           asp-action="Index"
+           asp-route-pageIndex="@(Model.UserViewModels.PageIndex + 1)"
+           asp-route-searchQuery="@Model.SearchQuery"
+           asp-route-pageSize="@Model.PageSize"
+           class="btn btn-default @nextDisabled">
+            Next
+        </a>
+
+        <div class="row" style="margin-top: 20px;">
+            <div class="alert alert-warning text-left">
+                <button class="close" data-dismiss="alert">&times;</button>
+                <p>Seed Data From:</p>
+                <ul>
+                    <li>Names from: <a href="http://random-name-generator.info/" target="_blank">Random Name generator Site</a></li>
+                    <li>Addresses from: <a href="https://www.randomlists.com/random-addresses" target="_blank">Random Lists Site</a> </li>
+                    <li>Images from: <a href=" https://na.finalfantasyxiv.com/lodestone/character/?all_search=&search_type=character&q=" target="_blank">Final Fantasy XIV Characters First Page</a> </li>
+                </ul>
+            </div>
+        </div>
+
+    }
+    else
+    {
+        <p>Either there are no Users in the system or first or last names match the search query.</p>
+    }
+</div>

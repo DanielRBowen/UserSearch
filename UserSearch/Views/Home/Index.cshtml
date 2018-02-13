@@ -85,23 +85,31 @@
             </tbody>
         </table>
 
-        <a asp-controller="Home"
-           asp-action="Index"
-           asp-route-pageIndex="@(Model.UserViewModels.PageIndex - 1)"
-           asp-route-searchQuery="@Model.SearchQuery"
-           asp-route-pageSize="@Model.PageSize"
-           class="btn btn-default @prevDisabled">
-            Previous
+        <nav aria-label="...">
+            <ul class="pager">
+                <li>
+                    <a asp-controller="Home"
+                       asp-action="Index"
+                       asp-route-pageIndex="@(Model.UserViewModels.PageIndex - 1)"
+                       asp-route-searchQuery="@Model.SearchQuery"
+                       asp-route-pageSize="@Model.PageSize"
+                       class="btn btn-default @prevDisabled">
+                        Previous
 
-        </a>
-        <a asp-controller="Home"
-           asp-action="Index"
-           asp-route-pageIndex="@(Model.UserViewModels.PageIndex + 1)"
-           asp-route-searchQuery="@Model.SearchQuery"
-           asp-route-pageSize="@Model.PageSize"
-           class="btn btn-default @nextDisabled">
-            Next
-        </a>
+                    </a>
+                </li>
+                <li>
+                    <a asp-controller="Home"
+                       asp-action="Index"
+                       asp-route-pageIndex="@(Model.UserViewModels.PageIndex + 1)"
+                       asp-route-searchQuery="@Model.SearchQuery"
+                       asp-route-pageSize="@Model.PageSize"
+                       class="btn btn-default @nextDisabled">
+                        Next
+                    </a>
+                </li>
+            </ul>
+        </nav>
 
         <div class="row" style="margin-top: 20px;">
             <div class="alert alert-warning text-left">

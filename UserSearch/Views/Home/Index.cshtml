@@ -6,6 +6,26 @@
 }
 
 <div class="container">
+    <div class="row spacer">
+        <div class="alert alert-warning text-left">
+            <button class="close" data-dismiss="alert">&times;</button>
+            <p>This was an coding assement created on 2/12/18.</p>
+            <p>It shows a basic understanding of ASP.NET MVC</p>
+            <p>The requirements were to make a search box to search for a user by first or last name.</p>
+            <p>A tutorial to build a similar simple application such as this can be found <a href="https://docs.microsoft.com/en-us/aspnet/core/tutorials/first-mvc-app/" target="_blank">here</a>.</p>
+            <br />
+            <p>The NuGet Packages this application uses include:</p>
+            <ul>
+                <li>Microsoft.AspNetCore.All</li>
+                <li>Microsoft.EntityFrameworkCore.SqlServer</li>
+                <li>Microsoft.EntityFrameworkCore.Tools</li>
+                <li>Microsoft.NETCore.App</li>
+                <li>Microsoft.VisualStudio.Web.CodeGeneration.Design</li>
+                <li>SkiaSharp</li>
+            </ul>
+        </div>
+    </div>
+
     <div class="text-center panel bg-info">
         <h1>User Search</h1>
     </div>
@@ -126,6 +146,8 @@
     }
     else
     {
-        <p>Either there are no Users in the system or first or last names match the search query.</p>
+        <div class="alert alert-info" role="alert">
+            <p>Either there are no Users in the system or first or last names match the search query.</p>
+        </div>
     }
 </div>

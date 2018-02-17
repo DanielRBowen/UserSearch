@@ -1,8 +1,9 @@
 ﻿using System;
 using System.Linq;
+using System.Net;
 using System.Reflection;
+using System.Threading.Tasks;
 using UserSearch.Models;
-using static GetDataFromWebsite;
 
 namespace UserSearch.Data
 {
@@ -48,14 +49,14 @@ namespace UserSearch.Data
             context.SaveChanges();
 
             // Media types: https://en.wikipedia.org/wiki/Media_type
-            var currentFolderPath = Assembly.GetEntryAssembly().Location;
+            //var currentFolderPath = Assembly.GetEntryAssembly().Location;
 
             // Images from: https://na.finalfantasyxiv.com/lodestone/character/?all_search=&search_type=character&q=
             var userImage1 = new Media
             {
                 FileName = "userImage1.jpg",
                 Type = "image/jpeg",
-                Content = GetContentFromSiteURL("https://img2.finalfantasyxiv.com/f/bc8f2d564196c07719902441da2335db_ee738654add55c3d07ea92d8e108074cfc0_96x96.jpg?1518484910")
+                Content = GetContentFromSite("https://img2.finalfantasyxiv.com/f/bc8f2d564196c07719902441da2335db_ee738654add55c3d07ea92d8e108074cfc0_96x96.jpg?1518484910")
             };
             context.Media.Add(userImage1);
 
@@ -63,7 +64,7 @@ namespace UserSearch.Data
             {
                 FileName = "userImage2.jpg",
                 Type = "image/jpeg",
-                Content = GetContentFromSiteURL("https://img2.finalfantasyxiv.com/f/6a59731b6cf1a95ac1aa7be8158151c6_393eb74047bb90c8d80dea54218430eefc0_96x96.jpg?1518484786")
+                Content = GetContentFromSite("https://img2.finalfantasyxiv.com/f/6a59731b6cf1a95ac1aa7be8158151c6_393eb74047bb90c8d80dea54218430eefc0_96x96.jpg?1518484786")
             };
             context.Media.Add(userImage2);
 
@@ -71,7 +72,7 @@ namespace UserSearch.Data
             {
                 FileName = "userImage3.jpg",
                 Type = "image/jpeg",
-                Content = GetContentFromSiteURL("https://img2.finalfantasyxiv.com/f/47fa1e28db601c0ead28d89498dc7cb4_2f698530a28d671d20278c8518c804c9fc0_96x96.jpg?1518485259")
+                Content = GetContentFromSite("https://img2.finalfantasyxiv.com/f/47fa1e28db601c0ead28d89498dc7cb4_2f698530a28d671d20278c8518c804c9fc0_96x96.jpg?1518485259")
             };
             context.Media.Add(userImage3);
 
@@ -79,7 +80,7 @@ namespace UserSearch.Data
             {
                 FileName = "userImage4.jpg",
                 Type = "image/jpeg",
-                Content = GetContentFromSiteURL("https://img2.finalfantasyxiv.com/f/d14fca8a547deca3cc3765a9a0282477_1f5fd239b885860b7c2bfc72ad1d97effc0_96x96.jpg?1518486304")
+                Content = GetContentFromSite("https://img2.finalfantasyxiv.com/f/d14fca8a547deca3cc3765a9a0282477_1f5fd239b885860b7c2bfc72ad1d97effc0_96x96.jpg?1518486304")
             };
             context.Media.Add(userImage4);
 
@@ -87,7 +88,7 @@ namespace UserSearch.Data
             {
                 FileName = "userImage5.jpg",
                 Type = "image/jpeg",
-                Content = GetContentFromSiteURL("https://img2.finalfantasyxiv.com/f/f4e879fd25fdfc6bbf219e3666d4c157_781d6b3603312f6be41670afa37282e0fc0_96x96.jpg?1518483216")
+                Content = GetContentFromSite("https://img2.finalfantasyxiv.com/f/f4e879fd25fdfc6bbf219e3666d4c157_781d6b3603312f6be41670afa37282e0fc0_96x96.jpg?1518483216")
             };
             context.Media.Add(userImage5);
 
@@ -95,7 +96,7 @@ namespace UserSearch.Data
             {
                 FileName = "userImage6.jpg",
                 Type = "image/jpeg",
-                Content = GetContentFromSiteURL("https://img2.finalfantasyxiv.com/f/9cf1fa97e61ed04d5848556230c3fd12_134930215abb8a90ec37d6cc05b05e08fc0_96x96.jpg?1518485391")
+                Content = GetContentFromSite("https://img2.finalfantasyxiv.com/f/9cf1fa97e61ed04d5848556230c3fd12_134930215abb8a90ec37d6cc05b05e08fc0_96x96.jpg?1518485391")
             };
             context.Media.Add(userImage6);
 
@@ -103,7 +104,7 @@ namespace UserSearch.Data
             {
                 FileName = "userImage7.jpg",
                 Type = "image/jpeg",
-                Content = GetContentFromSiteURL("https://img2.finalfantasyxiv.com/f/41ccb8e4131296f612e39e0dcb89b135_7126768d768f6c6c7fed3eaee98c3a8afc0_96x96.jpg?1518486535")
+                Content = GetContentFromSite("https://img2.finalfantasyxiv.com/f/41ccb8e4131296f612e39e0dcb89b135_7126768d768f6c6c7fed3eaee98c3a8afc0_96x96.jpg?1518486535")
             };
             context.Media.Add(userImage7);
 
@@ -111,7 +112,7 @@ namespace UserSearch.Data
             {
                 FileName = "userImage8.jpg",
                 Type = "image/jpeg",
-                Content = GetContentFromSiteURL("https://img2.finalfantasyxiv.com/f/f57dfee54aee6d6f6b07a212ccf7cb0d_410ddb5a66a2fcacf538bec5ea5d0291fc0_96x96.jpg?1518484961")
+                Content = GetContentFromSite("https://img2.finalfantasyxiv.com/f/f57dfee54aee6d6f6b07a212ccf7cb0d_410ddb5a66a2fcacf538bec5ea5d0291fc0_96x96.jpg?1518484961")
             };
             context.Media.Add(userImage8);
 
@@ -119,7 +120,7 @@ namespace UserSearch.Data
             {
                 FileName = "userImage9.jpg",
                 Type = "image/jpeg",
-                Content = GetContentFromSiteURL("https://img2.finalfantasyxiv.com/f/1ca5b813ad7b9d4a3de8bd9df4e617a6_b937560c841465f7c4bc8eb47ea7948afc0_96x96.jpg?1518483062")
+                Content = GetContentFromSite("https://img2.finalfantasyxiv.com/f/1ca5b813ad7b9d4a3de8bd9df4e617a6_b937560c841465f7c4bc8eb47ea7948afc0_96x96.jpg?1518483062")
             };
             context.Media.Add(userImage9);
 
@@ -127,7 +128,7 @@ namespace UserSearch.Data
             {
                 FileName = "userImage10.jpg",
                 Type = "image/jpeg",
-                Content = GetContentFromSiteURL("https://img2.finalfantasyxiv.com/f/bb204b1a8dff055a3dc333bd7b9da953_58a84e851e55175d22158ca97af58a1ffc0_96x96.jpg?1518486165")
+                Content = GetContentFromSite("https://img2.finalfantasyxiv.com/f/bb204b1a8dff055a3dc333bd7b9da953_58a84e851e55175d22158ca97af58a1ffc0_96x96.jpg?1518486165")
             };
             context.Media.Add(userImage10);
 
@@ -135,7 +136,7 @@ namespace UserSearch.Data
             {
                 FileName = "userImage11.jpg",
                 Type = "image/jpeg",
-                Content = GetContentFromSiteURL("https://img2.finalfantasyxiv.com/f/466778300382f2fde4da61a25af53786_c514cdcdb619439df97d906d4434ccc6fc0_96x96.jpg?1518486210")
+                Content = GetContentFromSite("https://img2.finalfantasyxiv.com/f/466778300382f2fde4da61a25af53786_c514cdcdb619439df97d906d4434ccc6fc0_96x96.jpg?1518486210")
             };
             context.Media.Add(userImage11);
 
@@ -143,7 +144,7 @@ namespace UserSearch.Data
             {
                 FileName = "userImage12.jpg",
                 Type = "image/jpeg",
-                Content = GetContentFromSiteURL("https://img2.finalfantasyxiv.com/f/0f0954b2f2a9928946051549cac5d88e_57ae9ee5592123dd79c8912bf768cf99fc0_96x96.jpg?1518486383")
+                Content = GetContentFromSite("https://img2.finalfantasyxiv.com/f/0f0954b2f2a9928946051549cac5d88e_57ae9ee5592123dd79c8912bf768cf99fc0_96x96.jpg?1518486383")
             };
             context.Media.Add(userImage12);
 
@@ -151,7 +152,7 @@ namespace UserSearch.Data
             {
                 FileName = "userImage13.jpg",
                 Type = "image/jpeg",
-                Content = GetContentFromSiteURL("https://img2.finalfantasyxiv.com/f/37db1766223d4d6db5cf3f453c478ca3_a91aae52cff9ef65932db06b150ffd47fc0_96x96.jpg?1518486416")
+                Content = GetContentFromSite("https://img2.finalfantasyxiv.com/f/37db1766223d4d6db5cf3f453c478ca3_a91aae52cff9ef65932db06b150ffd47fc0_96x96.jpg?1518486416")
             };
             context.Media.Add(userImage13);
 
@@ -159,7 +160,7 @@ namespace UserSearch.Data
             {
                 FileName = "userImage14.jpg",
                 Type = "image/jpeg",
-                Content = GetContentFromSiteURL("https://img2.finalfantasyxiv.com/f/fc814decc9f2629c82d920941e1b381c_138751880f18161a907d7cf0faa43f07fc0_96x96.jpg?1518483300")
+                Content = GetContentFromSite("https://img2.finalfantasyxiv.com/f/fc814decc9f2629c82d920941e1b381c_138751880f18161a907d7cf0faa43f07fc0_96x96.jpg?1518483300")
             };
             context.Media.Add(userImage14);
 
@@ -167,7 +168,7 @@ namespace UserSearch.Data
             {
                 FileName = "userImage15.jpg",
                 Type = "image/jpeg",
-                Content = GetContentFromSiteURL("https://img2.finalfantasyxiv.com/f/387218e62360ba4ec6fb96dcb7b864dd_8f82f937943b6baf4c565020d5eba0ccfc0_96x96.jpg?1518486449")
+                Content = GetContentFromSite("https://img2.finalfantasyxiv.com/f/387218e62360ba4ec6fb96dcb7b864dd_8f82f937943b6baf4c565020d5eba0ccfc0_96x96.jpg?1518486449")
             };
             context.Media.Add(userImage15);
 
@@ -175,7 +176,7 @@ namespace UserSearch.Data
             {
                 FileName = "userImage16.jpg",
                 Type = "image/jpeg",
-                Content = GetContentFromSiteURL("https://img2.finalfantasyxiv.com/f/1a9fee6b173e20ff71e9a505a9d29e43_fce4949e615393e574f2d57134b31fc1fc0_96x96.jpg?1518484379")
+                Content = GetContentFromSite("https://img2.finalfantasyxiv.com/f/1a9fee6b173e20ff71e9a505a9d29e43_fce4949e615393e574f2d57134b31fc1fc0_96x96.jpg?1518484379")
             };
             context.Media.Add(userImage16);
 
@@ -196,6 +197,25 @@ namespace UserSearch.Data
             context.UserMedia.Add(new UserMedia { User = users[14], Media = userImage15 });
             context.UserMedia.Add(new UserMedia { User = users[15], Media = userImage16 });
             context.SaveChanges();
+        }
+
+        public static byte[] GetContentFromSite(string urlString)
+        {
+            using (var client = new WebClient())
+            {
+                try
+                {
+                    var content = client.DownloadDataTaskAsync(urlString).Result;
+                    return content;
+                }
+                catch (Exception ex)
+                {
+                    var currentFolderPath = Assembly.GetEntryAssembly().Location;
+                    string[] lines = { ex.Message, ex.Source, ex.InnerException.Message };
+                    System.IO.File.WriteAllLines(currentFolderPath, lines);
+                    return null;
+                }
+            }
         }
     }
 }

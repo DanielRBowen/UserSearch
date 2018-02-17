@@ -158,15 +158,26 @@ namespace UserSearch.Controllers
             if (userMedia.Any())
             {
                 var mediaIds = userMedia.Select(userMedia0 => userMedia0.MediaId);
-                var mediaList = new List<Media>();
+                //var mediaList = new List<Media>();
+                var media =
+                    from media0 in _context.Media
+                    from mediaId in mediaIds
+                    where media0.Id == mediaId
+                    select new Media
+                    {
+                        Id = mediaId,
+                        Content = media0.Content,
+                        FileName = media0.FileName,
+                        Type = media0.Type
+                    };
 
-                foreach (var mediaId in mediaIds)
-                {
-                    mediaList.Add(_context.Media.SingleOrDefault(media => media.Id == mediaId));
-                }
+                //foreach (var mediaId in mediaIds)
+                //{
+                //    mediaList.Add(_context.Media.SingleOrDefault(media => media.Id == mediaId));
+                //}
 
                 _context.UserMedia.RemoveRange(userMedia);
-                _context.Media.RemoveRange(mediaList);
+                _context.Media.RemoveRange(media);
             }
 
             _context.Users.Remove(user);

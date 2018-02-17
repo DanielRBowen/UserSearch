@@ -22,6 +22,8 @@ namespace UserSearch.Controllers
         {
             var usersQuery =
                 from user in UserSearchContext.Users
+                orderby user.FirstName
+                orderby user.LastName
                 select new UserViewModel
                 {
                     Id = user.Id,

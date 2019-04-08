@@ -88,7 +88,7 @@ namespace UserSearch.Controllers
                     height = size;
                 }
 
-                using (var resized = original.Resize(new SKImageInfo(width, height), SKBitmapResizeMethod.Lanczos3))
+                using (var resized = original.Resize(new SKImageInfo(width, height), SKFilterQuality.Medium))
                 {
                     if (resized == null)
                     {
